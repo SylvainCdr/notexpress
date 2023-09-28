@@ -19,6 +19,15 @@ class Note
     #[ORM\Column(length: 255)]
     private ?string $content = null;
 
+    #[ORM\ManyToOne(inversedBy: 'notes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'notes')]
+    private ?Category $category = null;
+
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,4 +56,29 @@ class Note
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
 }
