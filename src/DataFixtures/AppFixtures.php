@@ -26,6 +26,7 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setUsername($faker->userName())
                 ->setPassword($faker->password())
+                ->setRoles(['ROLE_USER'])
                 ;
             // On ajout l'objet auteur dans le tableau
             array_push($objectUser, $user);
